@@ -1,8 +1,7 @@
 import subprocess
 import shlex
-import platform
 
-from gitbash import GitBash
+from osutils.gitbash import GitBash
 
 command = GitBash().get_command('ping -n 5 localhost')
 tokenized = shlex.split(command)

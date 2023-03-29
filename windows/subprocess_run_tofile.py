@@ -1,8 +1,7 @@
 import subprocess
 import shlex
-import platform
 
-from gitbash import GitBash
+from osutils.gitbash import GitBash
 
 
 def run_command(command, file_prefix=None):

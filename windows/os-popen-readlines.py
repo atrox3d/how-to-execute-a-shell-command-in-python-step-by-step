@@ -1,6 +1,6 @@
 import os
 
-from gitbash import GitBash
+from osutils.gitbash import GitBash
 
 bash = GitBash()
 command = bash.get_command('ping -n 5 localhost')

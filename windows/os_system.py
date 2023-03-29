@@ -1,7 +1,7 @@
 import os
 import platform
 
-from gitbash import GitBash
+from osutils.gitbash import GitBash
 
 
 def run_bash_command(command):

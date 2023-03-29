@@ -1,6 +1,6 @@
 import os
 
-from windows.gitbash import GitBash
+from osutils.gitbash import GitBash
 
 
 def run_command(command):
