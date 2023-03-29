@@ -1,14 +1,21 @@
 import os
 
-from gitbash import GitBash
+from osutils.gitbash import GitBash
+
+from osutils.os_detect import (
+    is_windows,
+    is_linux,
+    is_macos,
+    os_name
+)
 
 
-def run_command(command, use_bash=True):
+def run_command(command, use_bash=True if is_windows() else False):
 
     if use_bash:
         # get git bash to run command
         bash = GitBash()
-        command = bash.get_command('date')
+        command = bash.get_command(command)
 
     print()
     print(f'command                 | {command}')
@@ -34,5 +41,8 @@ def run_command(command, use_bash=True):
     print(f'output._proc.returncode | {output._proc.returncode}')   # 0-127
 
 
-run_command('ping -n 5 localhost')
-# run_command('path', use_bash=False)
+if is_windows():
+    run_command('ping -n 5 localhost')
+    run_command('path', use_bash=False)
+else:
+    run_command('ping -c 5 localhost')
