@@ -7,6 +7,10 @@ from util.gitbash import GitBash
 def run_bash_command(command):
     bash = GitBash()
     cmd = bash.get_command(command)
+    #
+    # os.system() needs extra double quoting!
+    #
+    cmd = f'"{cmd}"'
 
     print()
     print(f'os_name   | {bash.os}')
@@ -32,10 +36,12 @@ def run_windows_command(command):
 
 
 # run some commands using bash or git bash, if installed
-for command in 'date ls pwd error'.split():
-    run_bash_command(command)
+# for command in 'date ls pwd error'.split():
+#     run_bash_command(command)
 
 # run some windows commands
-if platform.system() == 'Windows':
-    for command in 'dir error'.split():
-        run_windows_command(command)
+# if platform.system() == 'Windows':
+#     for command in 'dir error'.split():
+#         run_windows_command(command)
+
+run_bash_command('ping -n 5 localhost')

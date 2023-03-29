@@ -1,3 +1,4 @@
+import os
 import platform
 from pathlib import Path
 
@@ -29,7 +30,7 @@ class GitBash:
 
         if self.os == 'windows':
             os_prefix = f'"{self.path}" -c '
-            command = f'{os_prefix}{cmd}'
+            command = f'{os_prefix} "{cmd}"'
         else:
             command = cmd
 
@@ -37,5 +38,22 @@ class GitBash:
 
 
 if __name__ == '__main__':
-    osname, cmd = GitBash(*'so many paths, man'.split()).get_command('ls')
-    print(osname, cmd)
+    bash = GitBash(*'so many paths, man'.split())
+    cmd = bash.get_command('ping -n 5 localhost')
+
+    print()
+    print(cmd)
+    process = os.popen(cmd)
+    output = process.read()
+    exit_code = process.close()
+    print(output)
+    print(f'{exit_code = }')
+
+    #
+    # os.system() needs extra double quoting!
+    #
+    cmd = f'"{cmd}"'
+    print()
+    print(cmd)
+    exit_code = os.system(cmd)
+    print(f'{exit_code = }')

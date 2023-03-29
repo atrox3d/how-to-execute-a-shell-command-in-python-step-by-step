@@ -35,5 +35,5 @@ def run_command(command, use_bash=True):
     print(f'output._proc.returncode | {output._proc.returncode}')   # 0-127
 
 
-run_command('date')
-run_command('path', use_bash=False)
+run_command('ping -n 5 localhost')
+# run_command('path', use_bash=False)
