@@ -4,6 +4,7 @@ import platform
 
 def get_git_bash_command(cmd):
     """ tries to run command in git bash if under windows """
+
     os_name = platform.system().lower()
     if os_name == 'windows':
         os_prefix = r'"C:\Program Files\Git\bin\bash.exe" -c '
