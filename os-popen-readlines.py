@@ -1,9 +1,18 @@
 import os
 
 from osutils.gitbash import GitBash
+from osutils.os_detect import (
+    is_windows,
+    is_linux,
+    is_macos,
+    os_name
+)
 
-bash = GitBash()
-command = bash.get_command('ping -n 5 localhost')
+if is_windows():
+    bash = GitBash()
+    command = bash.get_command('ping -n 5 localhost')
+else:
+    command = 'ping -c 5 localhost'
 
 print(f'command   | {command}')
 process = os.popen(command)
