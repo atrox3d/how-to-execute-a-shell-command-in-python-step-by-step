@@ -1,7 +1,6 @@
 import os
 
 from osutils.gitbash import GitBash
-
 from osutils.os_detect import (
     is_windows,
     is_linux,
