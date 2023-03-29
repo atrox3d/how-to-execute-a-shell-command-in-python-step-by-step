@@ -2,19 +2,23 @@ import subprocess
 import shlex
 
 from osutils.gitbash import GitBash
+from osutils.os_detect import (
+    is_windows,
+    is_linux,
+    is_macos,
+    os_name
+)
 
 
 def run_command(command):
-    command = GitBash().get_command(command)
+    if is_windows():
+        command = GitBash().get_command(command)
     tokenized = shlex.split(command)
     print(f'command   | {tokenized}')
 
     completed = subprocess.run(
         tokenized,
-        # capture_output=True,        # save output to completed.stdout and/or completed.stderr
-        stdout=subprocess.PIPE,     # capture stdout
-        # stderr=subprocess.PIPE,    # capture stderr
-        stderr=subprocess.STDOUT,   # redirect stderr to stdout
+        capture_output=True,        # save output to completed.stdout and/or completed.stderr
         text=True                   # save as text, not binary
     )
 

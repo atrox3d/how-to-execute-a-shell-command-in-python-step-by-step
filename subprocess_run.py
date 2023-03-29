@@ -2,8 +2,17 @@ import subprocess
 import shlex
 
 from osutils.gitbash import GitBash
+from osutils.os_detect import (
+    is_windows,
+    is_linux,
+    is_macos,
+    os_name
+)
 
-command = GitBash().get_command('ping -n 5 localhost')
+if is_windows():
+    command = GitBash().get_command('ping -n 5 localhost')
+else:
+    command = GitBash().get_command('ping -c 5 localhost')
 tokenized = shlex.split(command)
 print(f'command   | {tokenized}')
 

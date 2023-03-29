@@ -2,10 +2,17 @@ import subprocess
 import shlex
 
 from osutils.gitbash import GitBash
+from osutils.os_detect import (
+    is_windows,
+    is_linux,
+    is_macos,
+    os_name
+)
 
 
 def run_command(command, file_prefix=None):
-    command = GitBash().get_command(command)
+    if is_windows():
+        command = GitBash().get_command(command)
     tokenized = shlex.split(command)
     print(f'command   | {tokenized}')
 
