@@ -14,7 +14,11 @@ def run_command(command):
         text=True                   # save as text, not binary
     )
 
-    # completed is a CompletedProcess object
+    # completed is a CompletedProcess object;ù
+    # completed.args      : tokenized command
+    # completed.returncode: exit code
+    # completed.stdout    : output stream
+    # completed.sterr     : error stream
     for k, v in vars(completed).items():
         print(f'completed | {k:15} | {v}')
 
