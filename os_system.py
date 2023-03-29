@@ -22,7 +22,6 @@ def run_bash_command(command):
 
 
 def run_windows_command(command):
-
     print()
     print(f'os_name   | {platform.system()}')
     print(f'command   | {command}')
