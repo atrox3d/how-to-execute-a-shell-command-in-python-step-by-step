@@ -1,0 +1,6 @@
+/venv/
+/.idea/
+/private/
+/secret/
+/files/
+__pycache__
