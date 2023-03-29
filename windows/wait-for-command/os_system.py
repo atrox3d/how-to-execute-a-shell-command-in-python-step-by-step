@@ -1,6 +1,6 @@
 import os
 
-from gitbash import GitBash
+from windows.gitbash import GitBash
 
 
 def run_command(command):
@@ -16,6 +16,6 @@ def run_command(command):
 bash_ping = GitBash().get_command('ping -n 5 localhost')
 windows_ping = 'ping -n 5 localhost'
 
-# run_command(windows_ping)
+run_command(windows_ping)
 run_command(bash_ping)
 
