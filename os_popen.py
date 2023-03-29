@@ -4,11 +4,14 @@ import platform
 from util.gitbash import GitBash
 
 
-def run_command(command):
+def run_command(command, use_bash=True):
 
-    # get git bash to run command
-    bash = GitBash()
-    command = bash.get_command('date')
+    if use_bash:
+        # get git bash to run command
+        bash = GitBash()
+        command = bash.get_command('date')
+
+    print()
     print(f'command                 | {command}')
 
     # open command but does not execute it
@@ -33,3 +36,4 @@ def run_command(command):
 
 
 run_command('date')
+run_command('path', use_bash=False)
