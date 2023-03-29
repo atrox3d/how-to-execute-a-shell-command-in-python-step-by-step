@@ -2,7 +2,6 @@ import os
 import platform
 
 os_name = platform.system().lower()
-
 if os_name == 'windows':
     cmd = r'"C:\Program Files\Git\bin\bash.exe" -c daet'
 else:
