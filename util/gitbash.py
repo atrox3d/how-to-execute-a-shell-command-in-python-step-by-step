@@ -49,9 +49,16 @@ if __name__ == '__main__':
     print(output)
     print(f'{exit_code = }')
 
-    #
-    # os.system() needs extra double quoting!
-    #
+    """
+    os.system() needs extra double quoting!
+    "c:\program files\git\bin\bash.exe" -c "command -args" 
+    won't work!!!
+
+    it needs to be all enclosed in double quotes:
+    ""c:\program files\git\bin\bash.exe" -c "command -args""
+
+    that's just horrible: http://ss64.com/nt/syntax-esc.html
+    """
     cmd = f'"{cmd}"'
     print()
     print(cmd)
