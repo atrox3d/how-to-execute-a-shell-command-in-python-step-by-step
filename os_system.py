@@ -1,8 +1,8 @@
 import os
 
-from util.gitbash import get_gitbash_command
+from util.gitbash import GitBash
 
-os_name, cmd = get_gitbash_command('date')
+os_name, cmd = GitBash().get_command('date')
 print(f'os_name   | {os_name}')
 print(f'command   | {cmd}')
 
