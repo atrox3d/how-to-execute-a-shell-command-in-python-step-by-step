@@ -1,9 +1,10 @@
 import os
+import platform
 
 from util.gitbash import GitBash
 
-os_name, cmd = GitBash().get_command('date')
-print(f'os_name   | {os_name}')
+cmd = GitBash().get_command('date')
+print(f'os_name   | {platform.system()}')
 print(f'command   | {cmd}')
 
 exit_code = os.system(cmd)

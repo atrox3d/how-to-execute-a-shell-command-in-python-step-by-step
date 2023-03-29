@@ -11,9 +11,13 @@ class GitBash:
     def __init__(self, *paths):
         self.paths.extend(paths)
 
+        os_name = platform.system().lower()
+        if os_name != 'windows':
+            raise SystemError(f'{GitBash.__class__.__name__} is only available in Windows')
+
         for path in self.paths:
-            self.git_bash = Path(path)
-            if self.git_bash.exists():
+            self.path = Path(path)
+            if self.path.exists():
                 break
         else:
             newline = '\n'
@@ -25,17 +29,11 @@ class GitBash:
     def get_command(self, cmd):
         """ tries to run command in git bash if under windows """
 
-        os_name = platform.system().lower()
-        if os_name == 'windows':
-            git_bash = self.git_bash
-            # os_prefix = r'"C:\Program Files\Git\bin\bash.exe" -c '
-            os_prefix = f'"{git_bash}" -c '
-        else:
-            os_prefix = ''
-
+        # os_prefix = r'"C:\Program Files\Git\bin\bash.exe" -c '
+        os_prefix = f'"{self.path}" -c '
         command = f'{os_prefix}{cmd}'
 
-        return os_name, command
+        return command
 
 
 if __name__ == '__main__':
